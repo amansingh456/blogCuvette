@@ -22,7 +22,6 @@ const addingPost = async (req, res) => {
        return res.status(400).send("please fill all the fields..!");
      const query = `INSERT INTO posts (title, description, img, date, userid) VALUES (?, ?, ?, ?, ? )`;
      const date = new Date().toLocaleString();
-      console.log(1)
      db.query(
        query,
        [title, description, image, date, user.id],
@@ -35,4 +34,37 @@ const addingPost = async (req, res) => {
  };
  
 
- module.exports={addingPost}
+
+ const gettingAllPost = async (req, res) => {
+   const query = `SELECT * FROM posts`;
+   db.query(query, (err, result) => {
+     if (err) return res.status(500).send(err);
+     return res.status(200).send({ result });
+   });
+ };
+ 
+
+
+ const getSinglePost = async (req, res) => {
+   const { id } = req.params;
+   console.log(id);
+   const query = `SELECT * FROM posts WHERE postid = ?`;
+   db.query(query, [id], (err, result) => {
+     if (err) return res.status(500).send(err);
+     return res.status(200).send(result[0]);
+   });
+ };
+
+
+
+ const fetchComments = async (req, res) => {
+   const { id } = req.params;
+   const query = `SELECT * FROM comments WHERE postid = ?`;
+   db.query(query, [id], (err, result) => {
+     if (err) return res.status(500).send(err);
+     return res.status(200).send(result);
+   });
+ };
+
+
+ module.exports={addingPost, gettingAllPost, getSinglePost, fetchComments}
