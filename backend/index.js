@@ -3,6 +3,7 @@ const cors = require("cors")
 const cookieParser = require("cookie-parser")
 const { authRouter } = require("./routes/auth.routes")
 const { postRouter } = require("./routes/post.routes")
+const { userRouter } = require("./routes/user.routes")
 require("dotenv").config()
 const PORT = process.env.PORT
 
@@ -20,6 +21,7 @@ app.get("/",(req,res)=>{
 })
 app.use("/api/auth", authRouter)
 app.use("/api/posts", postRouter)
+app.use("/api/user", userRouter)
 
 
 app.listen(PORT, () => {
