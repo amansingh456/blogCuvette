@@ -1,6 +1,8 @@
 const express = require("express")
 const cors = require("cors")
+const cookieParser = require("cookie-parser")
 const { authRouter } = require("./routes/auth.routes")
+const { postRouter } = require("./routes/post.routes")
 require("dotenv").config()
 const PORT = process.env.PORT
 
@@ -11,11 +13,13 @@ app.use(express.json())
 
 // middleware for connecting backend to frontend 
 app.use(cors())
+app.use(cookieParser())
 
 app.get("/",(req,res)=>{
   res.send("Game On...!")
 })
 app.use("/api/auth", authRouter)
+app.use("/api/posts", postRouter)
 
 
 app.listen(PORT, () => {

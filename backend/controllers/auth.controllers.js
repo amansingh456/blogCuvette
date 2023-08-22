@@ -41,10 +41,10 @@ const registerUser = async (req, res) => {
     );
     if (!isPasswordCorrect) return res.status(400).send("Invalid credentials");
     const token = jwt.sign({ id: result[0].id }, process.env.SECRET_KEY);
-    return res.status(200).send({  user: result[0], token });
-    // return res.cookie("access_token", token, {
-    //   httpOnly:true
-    // }).status(200).send({user:result[0]})
+    // return res.status(200).send({  user: result[0], token });
+    return res.cookie("access_token", token, {
+      httpOnly:true
+    }).status(200).send({user:result[0]})
   });
 };
 
