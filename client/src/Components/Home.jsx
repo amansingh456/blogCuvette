@@ -29,7 +29,7 @@ const Homepage = () => {
     fetchPosts();
   }, []);
   return (
-    <Box bg={"#cec0b8"} border={"1px solid black"}>
+    <Box bg={"#cec0b8"}>
       <Box p={4} bg={"#cec0b8"} maxW={"container.xl"} m={"auto"} >
         <Flex align={"center"} justifyContent={"space-between"}>
           <Box>

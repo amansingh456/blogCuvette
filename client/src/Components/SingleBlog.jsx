@@ -9,7 +9,7 @@ const SingleBlog = ({ userid, title, description, img, date, postid }) => {
   useEffect(() => {
     async function fetchUser() {
       const { data } = await axios.post(
-        `http://localhost:4000/api/users/getUser`,
+        `http://localhost:4000/api/user/getuser`,
         { userid }
       );
 
@@ -21,7 +21,7 @@ const SingleBlog = ({ userid, title, description, img, date, postid }) => {
   return (
     <Box
       key={userid}
-      bg="white"
+      bg="#f0ece9"
       p={4}
       boxShadow="md"
       borderRadius="md"
@@ -36,24 +36,23 @@ const SingleBlog = ({ userid, title, description, img, date, postid }) => {
         p={2}
       >
         <Box w={"25%"} p={2}>
-          <Image src={user?.image} alt={title} borderRadius={"40%"} />
+          <Image src={user?.image} alt={title} borderRadius={"50%"} />
         </Box>
         <Flex direction={"column"}>
           <Text
             w={"100%"}
-            fontWeight={"bold"}
             fontSize={{ base: "1.5rem", md: "1rem" }}
           >
             {date}
           </Text>
-          <Text fontWeight={"bold"} fontSize={{ base: "1.5rem", md: "1rem" }}>
-            Posted By {user?.username}
+          <Text  fontSize={{ base: "1.5rem", md: "1rem" }}>
+            Posted By <span style={{fontSize:"18px", fontWeight:"bold", textTransform:"capitalize", fontFamily:"Lugrasimo"}}>{user?.username}</span>
           </Text>
         </Flex>
       </Flex>
 
       <Image src={img} alt={title} w={"300px"} m={"auto"} h={"250px"} my={4} />
-      <Text fontWeight={"bold"} fontSize={"1.2rem"} fontStyle={"italic"}>
+      <Text fontWeight={"bold"} fontSize={"1.2rem"} fontFamily={"Lugrasimo"}>
         {title}
       </Text>
       <Text>

@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import SingleComment from "./SingleComment";
+import imgx from "../pngwing.com.png" 
 
 const Blog = () => {
   const [data, setData] = useState({});
@@ -17,7 +18,7 @@ const Blog = () => {
 
   async function fetchComments() {
     const { data } = await axios.get(
-      `http://16.170.208.211:4000/api/posts/comments/${id}`
+      `http://localhost:4000/api/posts/comments/${id}`
     );
 
     setTotalComments([...data]);
@@ -26,12 +27,12 @@ const Blog = () => {
   useEffect(() => {
     async function fetchPostById() {
       const { data } = await axios.get(
-        `http://16.170.208.211:4000/api/posts/${id}`
+        `http://localhost:4000/api/posts/${id}`
       );
       const userid = data.userid;
       console.log(userid);
       const { data: userData } = await axios.post(
-        `http://16.170.208.211:4000/api/users/getUser`,
+        `http://localhost:4000/api/user/getuser`,
         { userid }
       );
       setUser({ ...userData });
@@ -48,7 +49,7 @@ const Blog = () => {
     try {
       if (token) {
         const { data } = await axios.post(
-          `http://16.170.208.211:4000/api/posts/addcomment/${id}`,
+          `http://localhost:4000/api/posts/addcomment/${id}`,
           { comment },
           {
             headers: {
@@ -80,7 +81,7 @@ const Blog = () => {
   }
   console.log(user);
   return (
-    <Box bg={"gray.200"}>
+    <Box bg={"#cec0b8"}>
       <Flex
         direction={"column"}
         align={"center"}
@@ -88,68 +89,80 @@ const Blog = () => {
         maxW={"container.xl"}
         m={"auto"}
       >
-        <Text fontSize={"2xl"} fontWeight={"bold"} my={2}>
-          Posted By {user?.username} on {data.date}
+        <Text fontSize={"xl"} my={2}>
+          Posted by <span style={{ fontSize: "18px", fontWeight: "bold", textTransform: "capitalize", fontFamily: "Lugrasimo" }}>{user?.username}</span> on {data.date}
         </Text>
-        <Text fontSize={"2xl"} fontWeight={"bold"}>
+        <Text p={"30px"} fontSize={"3xl"} fontWeight={"bold"} fontFamily={"Lugrasimo"} textDecoration={"underline"}>
           {data.title}
         </Text>
-        <Text p={"30px"} textAlign={"left"} letterSpacing={1}>
-          {data.description}
+        <Text p={"20px"} textAlign={"left"} letterSpacing={1}>
+          &quot;{data.description}&quot;
         </Text>
       </Flex>
-      <Text fontSize={"2xl"} fontWeight={"bold"} textAlign={"center"} my={2}>
-        Comments
-      </Text>
-      <Flex direction={"column"}>
-        {totalComments?.map((comment, i) => {
-          return <SingleComment {...comment} key={i} />;
-        })}
+
+
+
+      <Flex justifyContent={"space-between"} >
+        <Box marginLeft={40}  style={{display:"flex",flexDirection:"column", alignContent:"center", justifyContent:"center"}}>
+          <Text fontSize={"2xl"} textAlign={"center"}  fontFamily={"Lugrasimo"} pb={4} textDecoration={"underline"}>
+            Comments
+          </Text>
+          <Flex direction={"column"}>
+            {totalComments?.map((comment, i) => {
+              return <SingleComment {...comment} key={i} />;
+            })}
+          </Flex>
+          <Flex
+            direction={"column"}
+            p={5}
+            align={"center"}
+            gap={4}
+            maxW={"container.xl"}
+            m={"auto"}
+            className="commentz"
+          // pb={60}
+          >
+            {loggedInUser ? (
+              <>
+                <Text fontSize={"2xl"} fontWeight={"bold"} textAlign={"center"}>
+                  Add Your Comment
+                </Text>
+                <Textarea
+                  placeholder="Enter your comment"
+                  border={"1px solid gray"}
+                  onChange={(e) => setComment(e.target.value)}
+                />
+                <Button
+                  colorScheme="yellow"
+                  border={"1px solid gray"}
+                  onClick={addComment}
+                >
+                  Submit
+                </Button>
+              </>
+            ) : (
+              <>
+                <Text fontSize={"2xl"} textAlign={"center"}>
+                  please login to comments on this post...
+                </Text>
+                <Link to="/login">
+                  <Button
+                    colorScheme="yellow"
+                    border={"1px solid gray"}
+                    onClick={addComment}
+                  >
+                    Login
+                  </Button>
+                </Link>
+              </>
+            )}
+          </Flex>
+        </Box>
+        <Box marginRight={40}  style={{display:"flex", alignContent:"center", justifyContent:"center"}} width={"auto"}>
+            <img src={imgx} width={"50%"} height={"20%"} alt="nothing" />
+        </Box>
       </Flex>
-      <Flex
-        direction={"column"}
-        p={5}
-        align={"center"}
-        gap={4}
-        maxW={"container.xl"}
-        m={"auto"}
-        border={"1px solid gray"}
-      >
-        {loggedInUser ? (
-          <>
-            <Text fontSize={"2xl"} fontWeight={"bold"} textAlign={"center"}>
-              Add Your Comment
-            </Text>
-            <Textarea
-              placeholder="Enter your comment"
-              border={"1px solid gray"}
-              onChange={(e) => setComment(e.target.value)}
-            />
-            <Button
-              colorScheme="yellow"
-              border={"1px solid gray"}
-              onClick={addComment}
-            >
-              Submit
-            </Button>
-          </>
-        ) : (
-          <>
-            <Text fontSize={"2xl"} fontWeight={"bold"} textAlign={"center"}>
-              Login to Add your comments
-            </Text>
-            <Link to="/login">
-              <Button
-                colorScheme="yellow"
-                border={"1px solid gray"}
-                onClick={addComment}
-              >
-                Login
-              </Button>
-            </Link>
-          </>
-        )}
-      </Flex>
+
     </Box>
   );
 };

@@ -7,7 +7,7 @@ const SingleComment = ({ comment, userid, postid, date }) => {
   useEffect(() => {
     async function fetchUserById() {
       const { data } = await axios.post(
-        `http://localhost:4000/api/users/getUser`,
+        `http://localhost:4000/api/user/getuser`,
         { userid }
       );
       setUser({ ...data });
@@ -16,8 +16,9 @@ const SingleComment = ({ comment, userid, postid, date }) => {
   }, []);
   return (
     <Flex
+      className="commentz"
       justify={"space-between"}
-      border={"1px solid gray"}
+      // border={"1px solid gray"}
       w={"100%"}
       align={"center"}
       px={6}
@@ -28,11 +29,11 @@ const SingleComment = ({ comment, userid, postid, date }) => {
         <Box w={"40px"} p={2}>
           <Image src={user?.image} borderRadius={"40%"} w={"60px"} />
         </Box>
-        <Text fontWeight={"bold"}>{user?.username}</Text>
+        <Text fontWeight={"bold"}><span style={{fontSize:"18px", fontWeight:"bold", textTransform:"capitalize", fontFamily:"Lugrasimo"}}>{user?.username}</span></Text>
       </Flex>
       <Flex direction={"column"}>
-        <Text fontWeight={"bold"}>{comment}</Text>
-        <Text fontWeight={"bold"}>{date ? date : null}</Text>
+        <Text fontSize={"xl"}>{comment}</Text>
+        <Text >{date ? date : null}</Text>
       </Flex>
     </Flex>
   );
