@@ -5,7 +5,6 @@ import { useSelector } from "react-redux";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import SingleComment from "./SingleComment";
-import imgx from "../pngwing.com.png" 
 
 const Blog = () => {
   const [data, setData] = useState({});
@@ -66,6 +65,7 @@ const Blog = () => {
           isClosable: true,
           position: "top",
         });
+        setComment("")
         fetchComments();
       }
     } catch (error) {
@@ -102,8 +102,8 @@ const Blog = () => {
 
 
 
-      <Flex justifyContent={"space-between"} >
-        <Box marginLeft={40}  style={{display:"flex",flexDirection:"column", alignContent:"center", justifyContent:"center"}}>
+      
+        <Box>
           <Text fontSize={"2xl"} textAlign={"center"}  fontFamily={"Lugrasimo"} pb={4} textDecoration={"underline"}>
             Comments
           </Text>
@@ -120,7 +120,7 @@ const Blog = () => {
             maxW={"container.xl"}
             m={"auto"}
             className="commentz"
-          // pb={60}
+            width={"70%"}
           >
             {loggedInUser ? (
               <>
@@ -130,13 +130,15 @@ const Blog = () => {
                 <Textarea
                   placeholder="Enter your comment"
                   border={"1px solid gray"}
+                  value={comment}
                   onChange={(e) => setComment(e.target.value)}
                 />
-                <Button
-                  colorScheme="yellow"
-                  border={"1px solid gray"}
-                  onClick={addComment}
-                >
+                <Button onClick={addComment} bg={"#323232"} color={"white"} fontWeight='bold' _hover={{ bg: '#323232' }} borderRadius={"100px"} _focus={{
+                  boxShadow:
+                    '0 0 1px 2px rgba(50, 50, 50, .75), 0 1px 1px rgba(0, 0, 0, .15)',
+                  bg: "#cec0b8",
+                  color: "#323232"
+                }}>
                   Submit
                 </Button>
               </>
@@ -146,11 +148,12 @@ const Blog = () => {
                   please login to comments on this post...
                 </Text>
                 <Link to="/login">
-                  <Button
-                    colorScheme="yellow"
-                    border={"1px solid gray"}
-                    onClick={addComment}
-                  >
+                <Button onClick={addComment} bg={"#323232"} color={"white"} fontWeight='bold' _hover={{ bg: '#323232' }} borderRadius={"100px"} _focus={{
+                  boxShadow:
+                    '0 0 1px 2px rgba(50, 50, 50, .75), 0 1px 1px rgba(0, 0, 0, .15)',
+                  bg: "#cec0b8",
+                  color: "#323232"
+                }}>
                     Login
                   </Button>
                 </Link>
@@ -158,10 +161,8 @@ const Blog = () => {
             )}
           </Flex>
         </Box>
-        <Box marginRight={40}  style={{display:"flex", alignContent:"center", justifyContent:"center"}} width={"auto"}>
-            <img src={imgx} width={"50%"} height={"20%"} alt="nothing" />
-        </Box>
-      </Flex>
+        
+      
 
     </Box>
   );

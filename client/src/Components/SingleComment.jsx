@@ -19,11 +19,13 @@ const SingleComment = ({ comment, userid, postid, date }) => {
       className="commentz"
       justify={"space-between"}
       // border={"1px solid gray"}
-      w={"100%"}
+      w={"70%"}
       align={"center"}
       px={6}
       maxW={"container.xl"}
       m={"auto"}
+      mb={2}
+      height={"auto"}
     >
       <Flex direction={"column"}>
         <Box w={"40px"} p={2}>
@@ -33,7 +35,7 @@ const SingleComment = ({ comment, userid, postid, date }) => {
       </Flex>
       <Flex direction={"column"}>
         <Text fontSize={"xl"}>{comment}</Text>
-        <Text >{date ? date : null}</Text>
+        <Text textAlign={"right"}>{date ? date : null}</Text>
       </Flex>
     </Flex>
   );

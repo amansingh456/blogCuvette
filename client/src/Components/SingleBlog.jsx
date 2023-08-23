@@ -1,11 +1,11 @@
 import { Box, Flex, Image, Text } from "@chakra-ui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const SingleBlog = ({ userid, title, description, img, date, postid }) => {
   const [user, setUser] = useState();
-
+  const navigate = useNavigate()
   useEffect(() => {
     async function fetchUser() {
       const { data } = await axios.post(
@@ -20,6 +20,7 @@ const SingleBlog = ({ userid, title, description, img, date, postid }) => {
 
   return (
     <Box
+      onClick={()=>navigate(`/blog/${postid}`)}
       key={userid}
       bg="#f0ece9"
       p={4}
@@ -27,6 +28,7 @@ const SingleBlog = ({ userid, title, description, img, date, postid }) => {
       borderRadius="md"
       width="100%"
       border={"1px solid gray"}
+      cursor={"pointer"}
     >
       <Flex
         justify={"space-between"}

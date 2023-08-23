@@ -13,7 +13,7 @@ const Navbar = () => {
   useEffect(() => {
     async function getUser() {
       const { data } = await axios.get(
-        `http://16.170.208.211:4000/api/auth/loggedinuser`,
+        `http://localhost:4000/api/auth/loggedinuser`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
