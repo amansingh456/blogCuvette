@@ -75,7 +75,6 @@ const Signup = () => {
             type="email"
             placeholder="Email"
             border={"1px solid gray"}
-            isRequired={true}
             onChange={(e) => setOjb({ ...obj, [e.target.name]: e.target.value })}
           />
           <Input
@@ -84,7 +83,6 @@ const Signup = () => {
             mt={2}
             placeholder="Username"
             border={"1px solid gray"}
-            isRequired={true}
             onChange={(e) => setOjb({ ...obj, [e.target.name]: e.target.value })}
 
           />
@@ -94,7 +92,6 @@ const Signup = () => {
             placeholder="Profile image link"
             mt={2}
             border={"1px solid gray"}
-            isRequired={true}
             onChange={(e) => setOjb({ ...obj, [e.target.name]: e.target.value })}
 
           />
@@ -103,8 +100,9 @@ const Signup = () => {
             type="password"
             placeholder="Password"
             mt={2}
+            maxLength={16}
+            minLength={7}
             border={"1px solid gray"}
-            required={true}
             onChange={(e) => setOjb({ ...obj, [e.target.name]: e.target.value })}
 
           />

@@ -24,16 +24,14 @@ const SingleBlog = ({ userid, title, description, img, date, postid }) => {
       key={userid}
       bg="#f0ece9"
       p={4}
-      boxShadow="md"
       borderRadius="md"
       width="100%"
-      border={"1px solid gray"}
       cursor={"pointer"}
+      className="blogBox"
     >
       <Flex
         justify={"space-between"}
         align={"center"}
-        // border={"2px solid gray"}
         borderRadius={"10px"}
         p={2}
       >

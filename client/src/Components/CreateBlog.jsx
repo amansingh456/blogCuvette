@@ -16,52 +16,64 @@ const CreateBlog = () => {
   const navigate = useNavigate();
   async function onSubmit() {
     const token = localStorage.getItem("token") || null;
-
-    try {
-      if (token) {
-        const { data } = await axios.post(
-          "http://localhost:4000/api/posts/addpost",
-          obj,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
-        toast({
-          title: "Success",
-          description: data,
-          status: "success",
-          duration: 3000,
-          isClosable: true,
-          position: "top",
-        });
-        navigate("/");
-      } else {
+    if (obj.title == undefined || obj.image == undefined || obj.description == undefined) {
+      toast({
+        title: "Warning",
+        description: "Please fill all the details",
+        status: "warning",
+        duration: 5000,
+        isClosable: true,
+        position: "top",
+      })
+    }
+    else{
+      try {
+        if (token) {
+          const { data } = await axios.post(
+            "http://localhost:4000/api/posts/addpost",
+            obj,
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
+          toast({
+            title: "Success",
+            description: data,
+            status: "success",
+            duration: 3000,
+            isClosable: true,
+            position: "top",
+          });
+          navigate("/");
+        } else {
+          toast({
+            title: "Error",
+            description: "Please Login First",
+            status: "error",
+            duration: 3000,
+            isClosable: true,
+            position: "top",
+          });
+        }
+      } catch (error) {
         toast({
           title: "Error",
-          description: "Please Login First",
+          description: error.response.data,
           status: "error",
           duration: 3000,
           isClosable: true,
           position: "top",
         });
       }
-    } catch (error) {
-      toast({
-        title: "Error",
-        description: error.response.data,
-        status: "error",
-        duration: 3000,
-        isClosable: true,
-        position: "top",
-      });
     }
+    
   }
 
   return (
-    <Box bg={"gray.100"}>
-      <Box p={4} maxW={"container.xl"} m={"auto"}>
+    <Box bg={"#f0ece9"}  width={"40%"} m={"auto"} mt={20} borderRadius={20}>
+      <Box p={4} width={"100%"} maxW={"container.xl"} m={"auto"}>
         <Heading>Create Post</Heading>
         <Input
           placeholder="Title"
@@ -84,12 +96,12 @@ const CreateBlog = () => {
           border={"1px solid gray"}
           onChange={(e) => setOjb({ ...obj, [e.target.name]: e.target.value })}
         />
-        <Button
-          mt={4}
-          colorScheme="yellow"
-          onClick={onSubmit}
-          border={"1px solid gray"}
-        >
+        <Button onClick={onSubmit} mt={4} p={5} bg={"#323232"} color={"white"} fontWeight='bold' _hover={{ bg: '#323232' }} _focus={{
+            boxShadow:
+              '0 0 1px 2px rgba(50, 50, 50, .75), 0 1px 1px rgba(0, 0, 0, .15)',
+            bg: "#cec0b8",
+            color: "#323232"
+          }}>
           Submit
         </Button>
       </Box>

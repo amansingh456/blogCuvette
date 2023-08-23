@@ -43,40 +43,52 @@ const Blog = () => {
 
   async function addComment() {
     const token = localStorage.getItem("token") || null;
-
-    try {
-      if (token) {
-        const { data } = await axios.post(
-          `http://localhost:4000/api/posts/addcomment/${id}`,
-          { comment },
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
-
+    if (!comment) {
+      toast({
+        title: "Warning",
+        description: "Enter Some Comment..!",
+        status: "warning",
+        duration: 5000,
+        isClosable: true,
+        position: "top",
+      })
+    }
+    else {
+      try {
+        if (token) {
+          const { data } = await axios.post(
+            `http://localhost:4000/api/posts/addcomment/${id}`,
+            { comment },
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
+  
+          toast({
+            title: "Success",
+            description: data,
+            status: "success",
+            duration: 3000,
+            isClosable: true,
+            position: "top",
+          });
+          setComment("")
+          fetchComments();
+        }
+      } catch (error) {
         toast({
-          title: "Success",
-          description: data,
-          status: "success",
+          title: "Error",
+          description: error.response.data,
+          status: "error",
           duration: 3000,
           isClosable: true,
           position: "top",
         });
-        setComment("")
-        fetchComments();
       }
-    } catch (error) {
-      toast({
-        title: "Error",
-        description: error.response.data,
-        status: "error",
-        duration: 3000,
-        isClosable: true,
-        position: "top",
-      });
     }
+    
   }
   return (
     <Box bg={"#cec0b8"}>
@@ -100,67 +112,67 @@ const Blog = () => {
 
 
 
-      
-        <Box>
-          <Text fontSize={"2xl"} textAlign={"center"}  fontFamily={"Lugrasimo"} pb={4} textDecoration={"underline"}>
-            Comments
-          </Text>
-          <Flex direction={"column"}>
-            {totalComments?.map((comment, i) => {
-              return <SingleComment {...comment} key={i} />;
-            })}
-          </Flex>
-          <Flex
-            direction={"column"}
-            p={5}
-            align={"center"}
-            gap={4}
-            maxW={"container.xl"}
-            m={"auto"}
-            className="commentz"
-            width={"70%"}
-          >
-            {loggedInUser ? (
-              <>
-                <Text fontSize={"2xl"} fontWeight={"bold"} textAlign={"center"}>
-                  Add Your Comment
-                </Text>
-                <Textarea
-                  placeholder="Enter your comment"
-                  border={"1px solid gray"}
-                  value={comment}
-                  onChange={(e) => setComment(e.target.value)}
-                />
-                <Button onClick={addComment} bg={"#323232"} color={"white"} fontWeight='bold' _hover={{ bg: '#323232' }} borderRadius={"100px"} _focus={{
+
+      <Box>
+        <Text fontSize={"2xl"} textAlign={"center"} fontFamily={"Lugrasimo"} pb={4} textDecoration={"underline"}>
+          Comments
+        </Text>
+        <Flex direction={"column"}>
+          {totalComments?.map((comment, i) => {
+            return <SingleComment {...comment} key={i} />;
+          })}
+        </Flex>
+        <Flex
+          direction={"column"}
+          p={5}
+          align={"center"}
+          gap={4}
+          maxW={"container.xl"}
+          m={"auto"}
+          className="commentz"
+          width={"70%"}
+        >
+          {loggedInUser ? (
+            <>
+              <Text fontSize={"2xl"} fontWeight={"bold"} textAlign={"center"}>
+                Add Your Comment
+              </Text>
+              <Textarea
+                placeholder="Enter your comment"
+                border={"1px solid gray"}
+                value={comment}
+                onChange={(e) => setComment(e.target.value)}
+              />
+              <Button onClick={addComment} bg={"#323232"} color={"white"} fontWeight='bold' _hover={{ bg: '#323232' }} borderRadius={"100px"} _focus={{
+                boxShadow:
+                  '0 0 1px 2px rgba(50, 50, 50, .75), 0 1px 1px rgba(0, 0, 0, .15)',
+                bg: "#cec0b8",
+                color: "#323232"
+              }}>
+                Submit
+              </Button>
+            </>
+          ) : (
+            <>
+              <Text fontSize={"2xl"} textAlign={"center"}>
+                please login to comments on this post...
+              </Text>
+              <Link to="/login">
+                <Button  bg={"#323232"} color={"white"} fontWeight='bold' _hover={{ bg: '#323232' }} borderRadius={"100px"} _focus={{
                   boxShadow:
                     '0 0 1px 2px rgba(50, 50, 50, .75), 0 1px 1px rgba(0, 0, 0, .15)',
                   bg: "#cec0b8",
                   color: "#323232"
                 }}>
-                  Submit
+                  Login
                 </Button>
-              </>
-            ) : (
-              <>
-                <Text fontSize={"2xl"} textAlign={"center"}>
-                  please login to comments on this post...
-                </Text>
-                <Link to="/login">
-                <Button onClick={addComment} bg={"#323232"} color={"white"} fontWeight='bold' _hover={{ bg: '#323232' }} borderRadius={"100px"} _focus={{
-                  boxShadow:
-                    '0 0 1px 2px rgba(50, 50, 50, .75), 0 1px 1px rgba(0, 0, 0, .15)',
-                  bg: "#cec0b8",
-                  color: "#323232"
-                }}>
-                    Login
-                  </Button>
-                </Link>
-              </>
-            )}
-          </Flex>
-        </Box>
-        
-      
+              </Link>
+            </>
+          )}
+        </Flex>
+      </Box>
+
+
 
     </Box>
   );
