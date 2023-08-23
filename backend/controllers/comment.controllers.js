@@ -6,8 +6,12 @@ require("dotenv").config()
 
 
 const addComments = async (req, res) => {
-   const token = req.cookies.access_token
-   if (!token) return res.status(401).send("you are not authorized to perform this action..!");
+  //  const token = req.cookies.access_token
+  //  if (!token) return res.status(401).send("you are not authorized to perform this action..!");
+  const { authorization } = req.headers;
+  if (!authorization) return res.status(401).send("you are not authorized to perform this action..!");
+  const token = authorization.split(" ")[1];
+  
    const user = jwt.verify(token, process.env.SECRET_KEY);
    const query = `SELECT * FROM users WHERE id = ?`;
    db.query(query, [user.id], (err, result) => {
