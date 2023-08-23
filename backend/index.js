@@ -24,8 +24,8 @@ app.use("/api/posts", postRouter)
 app.use("/api/user", userRouter)
 
 
-app.listen(PORT, () => {
-   console.log(`Server is running on port ${PORT} with ❤️`);
+app.listen(4003, () => {
+   console.log(`Server is running on port 4003 with ❤️`);
  });
 
 //  All set
