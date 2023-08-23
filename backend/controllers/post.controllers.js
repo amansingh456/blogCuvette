@@ -11,6 +11,7 @@ const addingPost = async (req, res) => {
    if (!authorization) return res.status(401).send("you are not authorized to perform this action..!");
   //  if (!token) return res.status(401).send("you are not authorized to perform this action..!");
    const token = authorization.split(" ")[1];
+   console.log(2)
    const user = jwt.verify(token, process.env.SECRET_KEY);
    const query = `SELECT * FROM users WHERE id = ?`;
    db.query(query, [user.id], (err, result) => {

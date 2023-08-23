@@ -44,16 +44,30 @@ const registerUser = async (req, res) => {
     // return res.status(200).send({  user: result[0], token });
     return res.cookie("access_token", token, {
       httpOnly:true
-    }).status(200).send({user:result[0]})
+    }).status(200).send({token, user:result[0]})
+  });
+};
+
+
+const loggedInUser = async (req, res) => {
+  const { authorization } = req.headers;
+  if (!authorization) return res.status(401).send("you are not authorized to perform this action..!");
+  const token = authorization.split(" ")[1];
+  const user = jwt.verify(token, process.env.SECRET_KEY);
+  const query = `SELECT * FROM users WHERE id = ?`;
+  db.query(query, [user.id], (err, result) => {
+    if (err) {
+      console.log(err);
+      return res.status(500).send(err);
+    }
+    return res.status(200).send(result[0]);
   });
 };
 
 
 
-
-
-
  module.exports={
    registerUser,
-   loginUser
+   loginUser, 
+   loggedInUser
  }
