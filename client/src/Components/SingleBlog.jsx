@@ -41,11 +41,11 @@ const SingleBlog = ({ userid, title, description, img, date, postid }) => {
         <Flex direction={"column"}>
           <Text
             w={"100%"}
-            fontSize={{ base: "1.5rem", md: "1rem" }}
+            fontSize={{ base: "1rem", md: "1rem" }}
           >
             {date}
           </Text>
-          <Text  fontSize={{ base: "1.5rem", md: "1rem" }}>
+          <Text  fontSize={{ base: "1rem", md: "1rem" }}>
             Posted By <span style={{fontSize:"18px", fontWeight:"bold", textTransform:"capitalize", fontFamily:"Lugrasimo"}}>{user?.username}</span>
           </Text>
         </Flex>

@@ -65,7 +65,7 @@ const Blog = () => {
               },
             }
           );
-  
+
           toast({
             title: "Success",
             description: data,
@@ -88,7 +88,7 @@ const Blog = () => {
         });
       }
     }
-    
+
   }
   return (
     <Box bg={"#cec0b8"}>
@@ -110,9 +110,6 @@ const Blog = () => {
         </Text>
       </Flex>
 
-
-
-
       <Box>
         <Text fontSize={"2xl"} textAlign={"center"} fontFamily={"Lugrasimo"} pb={4} textDecoration={"underline"}>
           Comments
@@ -130,7 +127,7 @@ const Blog = () => {
           maxW={"container.xl"}
           m={"auto"}
           className="commentz"
-          width={"70%"}
+          w={{base:"95%", sm:"90%", md:"70%"}}
         >
           {loggedInUser ? (
             <>
@@ -154,11 +151,11 @@ const Blog = () => {
             </>
           ) : (
             <>
-              <Text fontSize={"2xl"} textAlign={"center"}>
+              <Text fontSize={{base:"18px", sm:"22px", md:"26px"}} textAlign={"center"}>
                 please login to comments on this post...
               </Text>
               <Link to="/login">
-                <Button  bg={"#323232"} color={"white"} fontWeight='bold' _hover={{ bg: '#323232' }} borderRadius={"100px"} _focus={{
+                <Button bg={"#323232"} color={"white"} fontWeight='bold' _hover={{ bg: '#323232' }} borderRadius={"100px"} _focus={{
                   boxShadow:
                     '0 0 1px 2px rgba(50, 50, 50, .75), 0 1px 1px rgba(0, 0, 0, .15)',
                   bg: "#cec0b8",

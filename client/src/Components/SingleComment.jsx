@@ -18,24 +18,23 @@ const SingleComment = ({ comment, userid, postid, date }) => {
     <Flex
       className="commentz"
       justify={"space-between"}
-      // border={"1px solid gray"}
-      w={"70%"}
+      w={{base:"95%", sm:"90%", md:"70%"}}
       align={"center"}
-      px={6}
+      px={{base:2, sm:3, md:4}}
       maxW={"container.xl"}
       m={"auto"}
       mb={2}
       height={"auto"}
     >
       <Flex direction={"column"}>
-        <Box w={"40px"} p={2}>
+        <Box w={"60px"} p={2}>
           <Image src={user?.image} borderRadius={"40%"} w={"60px"} />
         </Box>
         <Text fontWeight={"bold"}><span style={{fontSize:"18px", fontWeight:"bold", textTransform:"capitalize", fontFamily:"Lugrasimo"}}>{user?.username}</span></Text>
       </Flex>
       <Flex direction={"column"}>
-        <Text fontSize={"xl"}>{comment}</Text>
-        <Text textAlign={"right"}>{date ? date : null}</Text>
+        <Text fontSize={{base:"14px", sm:"18px", md:"22px"}}>{comment}</Text>
+        <Text textAlign={"right"} fontSize={{base:"12px", sm:"16px", md:"18px"}}>{date ? date : null}</Text>
       </Flex>
     </Flex>
   );

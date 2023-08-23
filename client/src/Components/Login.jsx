@@ -52,7 +52,7 @@ const Login = () => {
 
   return (
    <>
-   <Flex justifyContent={"space-between"}>
+   <Flex justifyContent={"space-between"} flexDirection={{base:"column-reverse", md:"row"}}>
     
     <Box
       p={4}
@@ -61,6 +61,9 @@ const Login = () => {
       maxW={"container.xl"}
       m={"auto"}
       borderRadius={"20px"}
+      ml={10}
+      mr={10}
+      mb={{base:"40px", md:"auto"}}
     >
       <Input
         name="email"

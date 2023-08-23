@@ -61,7 +61,7 @@ const Signup = () => {
   }, [])
   return (
     <>
-      <Flex justifyContent={"space-between"}>
+      <Flex justifyContent={"space-between"} flexDirection={{base:"column-reverse", md:"row"}}>
         <Flex
           direction={"column"}
           p={4}
@@ -117,7 +117,7 @@ const Signup = () => {
             Register
           </Button>
         </Flex>
-        <Box className="container" ref={container} width={"40%"}></Box>
+        <Box className="container" ref={container} w={{base:"70%", md:"40%"}} m={"auto"}></Box>
       </Flex>
     </>
   );

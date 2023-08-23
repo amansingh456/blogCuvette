@@ -72,7 +72,7 @@ const CreateBlog = () => {
   }
 
   return (
-    <Box bg={"#f0ece9"}  width={"40%"} m={"auto"} mt={20} borderRadius={20}>
+    <Box bg={"#f0ece9"}  w={{base:"90%", sm:"80%", md:"60%", lg:"40%"}} m={"auto"} mt={{base:10, md:20}} mb={{base:10,md:20}} borderRadius={20}>
       <Box p={4} width={"100%"} maxW={"container.xl"} m={"auto"}>
         <Heading>Create Post</Heading>
         <Input

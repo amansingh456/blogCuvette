@@ -41,7 +41,7 @@ const Navbar = () => {
       >
         <Box>
           <Link to="/">
-            <Text fontSize="2rem" fontFamily={"Lugrasimo"} fontWeight={"bold"} color={"#323232"}>
+            <Text fontSize={{base:"14px", sm:"1.5rem", md:"2rem"}} fontFamily={"Lugrasimo"} fontWeight={"bold"} color={"#323232"}>
               #blog_Cuvette
             </Text>
           </Link>
@@ -50,12 +50,12 @@ const Navbar = () => {
           {user && token ? (
             <>
               <Link to="/create">
-                <Button p={2} colorScheme="green">
+                <Button p={{base:2, sm:2, md:2}} colorScheme="green">
                   Create Post
                 </Button>
               </Link>
               <Button
-                p={5}
+                p={{base:2, sm:2, md:2, lg:4}}
                 colorScheme="red"
                 onClick={() => dispatch({ type: "LOGOUT" })}
               >
@@ -65,7 +65,7 @@ const Navbar = () => {
           ) : (
             <>
               <Link to="/login">
-                <Button p={5} bg={"#323232"} color={"white"} fontWeight='bold' _hover={{ bg: '#323232' }} borderRadius={"100px"} _focus={{
+                <Button p={{base:2, sm:2, md:2, lg:4}} bg={"#323232"} color={"white"} fontWeight={{sm:100, md:"bold"}} _hover={{ bg: '#323232' }} borderRadius={"100px"} _focus={{
                   boxShadow:
                     '0 0 1px 2px rgba(50, 50, 50, .75), 0 1px 1px rgba(0, 0, 0, .15)',
                   bg: "#cec0b8",
@@ -75,7 +75,7 @@ const Navbar = () => {
                 </Button>
               </Link>
               <Link to="/signup">
-                <Button p={5} bg={"#323232"} color={"white"} fontWeight='bold' _hover={{ bg: '#323232' }} borderRadius={"100px"} _focus={{
+                <Button p={{base:2, sm:2, md:2, lg:4}} bg={"#323232"} color={"white"} fontWeight={{sm:100, md:"bold"}} _hover={{ bg: '#323232' }} borderRadius={"100px"} _focus={{
                   boxShadow:
                     '0 0 1px 2px rgba(50, 50, 50, .75), 0 1px 1px rgba(0, 0, 0, .15)',
                   bg: "#cec0b8",

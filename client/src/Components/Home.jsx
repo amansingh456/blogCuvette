@@ -11,12 +11,12 @@ const Homepage = () => {
   const [blogPosts, setBlogPosts] = useState([]);
   const container = useRef(null)
   useEffect(() => {
-    
+
     lottie.loadAnimation({
-      container:container.current,
-      renderer:"svg",
-      loop:true,
-      autoplay:true,
+      container: container.current,
+      renderer: "svg",
+      loop: true,
+      autoplay: true,
       animationData: animationData,
     })
     async function fetchPosts() {
@@ -30,22 +30,22 @@ const Homepage = () => {
   return (
     <Box bg={"#cec0b8"}>
       <Box p={4} bg={"#cec0b8"} maxW={"container.xl"} m={"auto"} >
-        <Flex align={"center"} justifyContent={"space-between"}>
+        <Flex flexDirection={{base:"column-reverse",sm:"column-reverse", md:"row"}} align={"center"} justifyContent={"space-between"}>
           <Box>
-          <Text mt={20} fontFamily={"Poppins"} fontSize={26}>
-            Our home is a unique as you are 😊
-        </Text>
-        <Text  mt={5} fontFamily={"Poppins"}fontSize={40} fontWeight={"bold"}>
-          Brightning homes with posts, comments socialization.
-        </Text>
+            <Text mt={{base:6, sm:8, md:20}} fontFamily={"Poppins"} fontSize={{base:"18px",sm:"20px", md:"24px", lg:"26px"}}>
+              Our home is a unique as you are 😊
+            </Text>
+            <Text display={{ base: "none", sm: "none", md: "block" }} mt={5} fontFamily={"Poppins"} fontSize={40} fontWeight={"bold"}>
+              Brightning homes with posts, comments socialization.
+            </Text>
           </Box>
           <Box ref={container}  >
           </Box>
         </Flex>
-        
+
       </Box>
       <Box p={4} bg={"#cec0b8"} maxW={"container.xl"} m={"auto"} >
-        <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={10} >
+        <SimpleGrid columns={{ base: 1, sm: 2, md: 3 }} spacing={10} >
           {blogPosts?.map((post, i) => (
             <SingleBlog {...post} key={i} />
           ))}
