@@ -29,7 +29,6 @@ const Blog = () => {
         `http://localhost:4000/api/posts/${id}`
       );
       const userid = data.userid;
-      console.log(userid);
       const { data: userData } = await axios.post(
         `http://localhost:4000/api/user/getuser`,
         { userid }
@@ -79,7 +78,6 @@ const Blog = () => {
       });
     }
   }
-  console.log(user);
   return (
     <Box bg={"#cec0b8"}>
       <Flex

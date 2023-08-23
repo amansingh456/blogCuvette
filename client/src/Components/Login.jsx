@@ -26,11 +26,9 @@ const Login = () => {
         isClosable: true,
         position: "top",
       });
-      //   console.log(user);
       dispatch({ type: "SET_USER", payload: user });
       navigate("/");
     } catch (error) {
-      console.log(error.response.data);
       toast({
         title: "Error",
         description: error.response.data,

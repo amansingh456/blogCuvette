@@ -12,7 +12,6 @@ const Signup = () => {
   const navigate = useNavigate()
 
   const onSignup = async () => {
-    console.log(obj.username)
     if (obj.image == undefined || obj.email == undefined || obj.password == undefined || obj.username == undefined) {
       toast({
         title: "Warning",

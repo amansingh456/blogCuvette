@@ -28,7 +28,6 @@ const CreateBlog = () => {
             },
           }
         );
-        console.log(data);
         toast({
           title: "Success",
           description: data,
