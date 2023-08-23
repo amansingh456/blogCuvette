@@ -27,8 +27,8 @@ const Navbar = () => {
     }
   }, []);
   return (
-    <Box bg={"#cec0b8"} padding={"10px"}>
-     <Box bg={"#cec0b8"} className="navBoxTwo">
+    <Box bg={"#cec0b8"} padding={"10px"} position={"sticky"}>
+     <Box bg={"#dcd2cd"} className="navBoxTwo" position={"sticky"}>
      <Flex
         as="nav"
         align="center"
