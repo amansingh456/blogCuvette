@@ -27,21 +27,22 @@ const Navbar = () => {
     }
   }, []);
   return (
-    <Box bg={"blackAlpha.800"}>
-      <Flex
+    <Box bg={"#cec0b8"} padding={"10px"}>
+     <Box bg={"#cec0b8"} className="navBoxTwo">
+     <Flex
         as="nav"
         align="center"
         justify="space-between"
         p={4}
         // bg={"blackAlpha.800"}
-        color="white"
+        color="#323232"
         maxW={"container.xl"}
         m={"auto"}
       >
         <Box>
           <Link to="/">
-            <Text fontSize="2rem" fontWeight={"bold"} color={"yellow.400"}>
-              Blogger
+            <Text fontSize="2rem" fontFamily={"Lugrasimo"} fontWeight={"bold"} color={"#323232"}>
+              #blog_Cuvette
             </Text>
           </Link>
         </Box>
@@ -64,12 +65,22 @@ const Navbar = () => {
           ) : (
             <>
               <Link to="/login">
-                <Button p={5} colorScheme="yellow">
+                <Button p={5} bg={"#323232"} color={"white"} fontWeight='bold' _hover={{ bg: '#323232' }} borderRadius={"100px"} _focus={{
+                  boxShadow:
+                    '0 0 1px 2px rgba(50, 50, 50, .75), 0 1px 1px rgba(0, 0, 0, .15)',
+                  bg: "#cec0b8",
+                  color: "#323232"
+                }}>
                   Login
                 </Button>
               </Link>
               <Link to="/signup">
-                <Button p={5} colorScheme="yellow">
+                <Button p={5} bg={"#323232"} color={"white"} fontWeight='bold' _hover={{ bg: '#323232' }} borderRadius={"100px"} _focus={{
+                  boxShadow:
+                    '0 0 1px 2px rgba(50, 50, 50, .75), 0 1px 1px rgba(0, 0, 0, .15)',
+                  bg: "#cec0b8",
+                  color: "#323232"
+                }}>
                   SignUp
                 </Button>
               </Link>
@@ -77,6 +88,7 @@ const Navbar = () => {
           )}
         </Flex>
       </Flex>
+     </Box>
     </Box>
   );
 };
