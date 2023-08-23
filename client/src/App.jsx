@@ -8,6 +8,7 @@ import Login from "./Components/Login";
 import Navbar from "./Components/Navbar";
 import Signup from "./Components/Signup";
 import store from "./store/store";
+import Footer from "./Components/Footer";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
           </Routes>
+          <Footer/>
         </BrowserRouter>
       </ChakraProvider>
     </Provider>
