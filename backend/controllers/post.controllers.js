@@ -11,17 +11,20 @@ const addingPost = async (req, res) => {
    if (!authorization) return res.status(401).send("you are not authorized to perform this action..!");
   //  if (!token) return res.status(401).send("you are not authorized to perform this action..!");
    const token = authorization.split(" ")[1];
-   console.log(2)
+   
    const user = jwt.verify(token, process.env.SECRET_KEY);
+   console.log('user: ', user);
+   
    const query = `SELECT * FROM users WHERE id = ?`;
    db.query(query, [user.id], (err, result) => {
      if (err) return res.status(500).send(err);
      if (result.length === 0) return res.status(404).send("user not found");
- 
+    
      const { title, description, image } = req.body;
      if (!title || !description || !image)
        return res.status(400).send("please fill all the fields..!");
      const query = `INSERT INTO posts (title, description, img, date, userid) VALUES (?, ?, ?, ?, ? )`;
+     
      const date = new Date().toLocaleString();
      db.query(
        query,

@@ -7,7 +7,7 @@ const SingleComment = ({ comment, userid, postid, date }) => {
   useEffect(() => {
     async function fetchUserById() {
       const { data } = await axios.post(
-        `http://localhost:4000/api/user/getuser`,
+        `http://13.48.46.179:4003/api/user/getuser`,
         { userid }
       );
       setUser({ ...data });
