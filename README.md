@@ -1,8 +1,11 @@
  # **blogCuvette**
+
+ This is a FullStack BlogApp that uses React, Node, Express, and MySql. where users can post a blog and can comment on blogs.
+ 
  `Frontend Url` -> <h3>http://ec2-13-48-46-179.eu-north-1.compute.amazonaws.com:3000/</h3>
  `Backend Url` -> <h3>http://ec2-13-48-46-179.eu-north-1.compute.amazonaws.com:4003/</h3>
  
-This is a FullStack BlogApp that uses React, Node, Express, and MySql. where users can post a blog and can comment on blogs.
+
 <h2>Features</h2>
 <li>This app uses MySQL database connected through AWS-RDS , where it stores and retrieves blog posts, comments, user data, and authentication details.</li>
 <li>The backend is developed by Node.js and Express.js, which manage the API requests and the underlying data. This separation of concerns ensures efficient handling of various functionalities.</li>
