@@ -13,4 +13,11 @@ This is a FullStack BlogApp that uses React, Node, Express, and MySql. where use
 
 
 
+<h2>TechStack</h2>
+<li>Frontend: React, Chakra UI, JavaScript, HTML, CSS</li>
+<li>Backend: Node.js, Express</li>
+<li>MySQL</li>
+<li>Deployment: AWS-RDS, AWS-EC2, PM2</li>
+
+
 
