@@ -16,7 +16,7 @@ const Login = () => {
     try {
       const {
         data: { token, user },
-      } = await axios.post("http://localhost:4000/api/auth/login", obj);
+      } = await axios.post("http://13.48.46.179:4003/api/auth/login", obj);
       localStorage.setItem("token", token);
       toast({
         title: "Success",

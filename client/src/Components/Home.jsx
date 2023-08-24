@@ -21,7 +21,7 @@ const Homepage = () => {
     })
     async function fetchPosts() {
       const { data } = await axios.get(
-        `http://localhost:4000/api/posts/allposts`
+        `http://13.48.46.179:4003/api/posts/allposts`
       );
       setBlogPosts(data.result);
     }

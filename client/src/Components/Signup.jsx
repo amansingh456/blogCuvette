@@ -25,7 +25,7 @@ const Signup = () => {
     else{
       try {
         const { data } = await axios.post(
-          "http://localhost:4000/api/auth/register",
+          "http://13.48.46.179:4003/api/auth/register",
           obj
         );
         toast({
