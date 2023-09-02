@@ -59,6 +59,15 @@ const addingPost = async (req, res) => {
    });
  };
 
+ const dltPost = async (req, res) => {
+  const { id } = req.params;
+  // console.log(id);
+  const query = `DELETE  FROM posts WHERE postid = ?`;
+  db.query(query, [id], (err, result) => {
+    if (err) return res.status(500).send(err);
+    return res.status(200).send(result[0]);
+  });
+};
 
 
  const fetchComments = async (req, res) => {
@@ -71,4 +80,4 @@ const addingPost = async (req, res) => {
  };
 
 
- module.exports={addingPost, gettingAllPost, getSinglePost, fetchComments}
+ module.exports={addingPost, gettingAllPost, getSinglePost, fetchComments, dltPost}

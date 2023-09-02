@@ -40,5 +40,13 @@ const fetchComments = async (req, res) => {
    });
  };
  
+ const deleteComment = async(req,res) =>{
+  const {id} = req.params;
+  const query = `DELETE FROM comments WHERE commentid = ?`;
+  db.query(query, [id], (err, result)=>{
+    if (err) return res.status(500).send(err);
+     return res.status(200).send(result);
+  })
+ }
 
- module.exports={addComments,fetchComments}
+ module.exports={addComments,fetchComments, deleteComment}
