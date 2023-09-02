@@ -46,6 +46,7 @@ const Homepage = () => {
       </Box>
       <Box p={4} bg={"#cec0b8"} maxW={"container.xl"} m={"auto"} >
         <SimpleGrid columns={{ base: 1, sm: 2, md: 3 }} spacing={10} >
+          {console.log(blogPosts)}
           {blogPosts?.map((post, i) => (
             <SingleBlog {...post} key={i} />
           ))}

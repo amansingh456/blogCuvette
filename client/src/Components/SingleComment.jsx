@@ -1,9 +1,35 @@
-import { Box, Flex, Image, Text } from "@chakra-ui/react";
+import { Box, Flex, Image, Text, useToast } from "@chakra-ui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { EditIcon, DeleteIcon} from '@chakra-ui/icons'
 
-const SingleComment = ({ comment, userid, postid, date }) => {
+const SingleComment = ({ commentid, comment, userid, postid, date }) => {
   const [user, setUser] = useState({});
+  const toast = useToast()
+  const handleDlt = async(id) => {
+    let token = localStorage.getItem("token") 
+    if(token){
+      try {
+        const { dat } = await axios.delete(
+          `http://13.48.46.179:4003/api/posts/comments/${id}`
+        );
+        window.location.reload(false)
+      } catch (error) {
+        console.log('error: ', error);
+      }
+    }
+    else{
+      toast({
+        title: "Error",
+        description: "Please Login First..!",
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+        position: "top",
+      })
+    }
+    
+  }
   useEffect(() => {
     async function fetchUserById() {
       const { data } = await axios.post(
@@ -31,6 +57,10 @@ const SingleComment = ({ comment, userid, postid, date }) => {
           <Image src={user?.image} borderRadius={"40%"} w={"60px"} />
         </Box>
         <Text fontWeight={"bold"}><span style={{fontSize:"18px", fontWeight:"bold", textTransform:"capitalize", fontFamily:"Lugrasimo"}}>{user?.username}</span></Text>
+      </Flex>
+      <Flex>
+        <EditIcon className="icon" cursor={"pointer"} color={"#138808"}  p={1} w={7} h={7}/> &nbsp; &nbsp;
+        <DeleteIcon onClick={()=>handleDlt(commentid)} className="icon" cursor={"pointer"} color={"#ff2400"}  p={1} w={7} h={7}/>
       </Flex>
       <Flex direction={"column"}>
         <Text fontSize={{base:"14px", sm:"18px", md:"22px"}}>{comment}</Text>

@@ -21,6 +21,8 @@ const Blog = () => {
     );
 
     setTotalComments([...data]);
+    console.log(totalComments)
+    console.log(comment)
   }
 
   useEffect(() => {
@@ -40,6 +42,8 @@ const Blog = () => {
     fetchPostById();
     fetchComments();
   }, []);
+
+  
 
   async function addComment() {
     const token = localStorage.getItem("token") || null;
