@@ -49,4 +49,17 @@ const fetchComments = async (req, res) => {
   })
  }
 
- module.exports={addComments,fetchComments, deleteComment}
+
+ const updateComment = async(req,res)=>{
+  const {id} = req.params
+ 
+  const query = `UPDATE comments SET comment = ? WHERE commentid = ?`;
+  db.query(query, [req.body.comment,id], (err, result)=>{
+    
+    if (err) return res.status(500).send(err);
+    
+     return res.status(200).send(result);
+  })
+ }
+
+ module.exports={addComments,fetchComments, deleteComment, updateComment}

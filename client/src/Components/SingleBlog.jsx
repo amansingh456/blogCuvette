@@ -13,7 +13,7 @@ const SingleBlog = ({ userid, title, description, img, date, postid }) => {
     if(token){
       try {
         const { dat } = await axios.delete(
-          `http://13.48.46.179:4003/api/posts/${id}`
+          `http://16.171.37.39/api/posts/${id}`
         );
         window.location.reload(false)
       } catch (error) {
@@ -35,7 +35,7 @@ const SingleBlog = ({ userid, title, description, img, date, postid }) => {
   useEffect(() => {
     async function fetchUser() {
       const { data } = await axios.post(
-        `http://13.48.46.179:4003/api/user/getuser`,
+        `http://16.171.37.39/api/user/getuser`,
         { userid }
       );
 

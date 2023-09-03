@@ -30,7 +30,7 @@ const CreateBlog = () => {
       try {
         if (token) {
           const { data } = await axios.post(
-            "http://13.48.46.179:4003/api/posts/addpost",
+            "http://16.171.37.39/api/posts/addpost",
             obj,
             {
               headers: {
