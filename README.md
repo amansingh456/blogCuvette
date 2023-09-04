@@ -2,8 +2,8 @@
 
  This is a FullStack BlogApp that uses React, Node, Express, and MySql. where users can post a blog and can comment on blogs.
  
- `Frontend Url` -> <h3>http://ec2-13-48-46-179.eu-north-1.compute.amazonaws.com:3000/</h3>
- `Backend Url` -> <h3>http://ec2-13-48-46-179.eu-north-1.compute.amazonaws.com:4003/</h3>
+ `Frontend Url` -> <h3>https://blog-cuvette-frontend.vercel.app/</h3>
+ `Backend Url` -> <h3>https://glamorous-gold-jersey.cyclic.app</h3>
  
 
 <h2>Features</h2>
@@ -21,7 +21,7 @@
 <li>Frontend: React, Chakra UI, JavaScript, HTML, CSS</li>
 <li>Backend: Node.js, Express</li>
 <li>MySQL</li>
-<li>Deployment: AWS-RDS, AWS-EC2, PM2</li>
+<li>Deployment: AWS-RDS, Vercel, Cyclic, PM2</li>
 
 
 
