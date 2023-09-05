@@ -1,6 +1,6 @@
  # **blogCuvette**
 
- This is a FullStack BlogApp that uses React, Node, Express, and MySql. where users can post a blog and can comment on blogs.
+ This is a FullStack BlogApp that uses React, Node, Express, and MySql. where users can post a blog and can comment on blogs, perform full CRUD operations.
  
  `Frontend Url` -> <h3>https://blog-cuvette-frontend.vercel.app/</h3>
  `Backend Url` -> <h3>https://glamorous-gold-jersey.cyclic.app</h3>
