@@ -20,8 +20,42 @@
 <h2>TechStack</h2>
 <li>Frontend: React, Chakra UI, JavaScript, HTML, CSS</li>
 <li>Backend: Node.js, Express</li>
-<li>MySQL</li>
+<li>Database: MySQL</li>
 <li>Deployment: AWS-RDS, Vercel, Cyclic, PM2</li>
+
+
+
+<br/>
+
+# *Get Started* 
+
+clone the repo --> `git clone https://github.com/amansingh456/blogCuvette.git`
+<br/>
+move to backend folder --> `cd backend`
+<br/>
+create a .env file with PORT  and SECRET_KEY , define value from your side
+<br/>
+install all dependencies --> `npm install`
+<br/>
+start server --> `npm run server`
+<br/>
+<br/>
+<br/>
+now move to client folder --> `cd client`
+<br/>
+install all dependencies --> `npm install`
+<br/>
+start app --> `npm run dev`
+<br/>
+<br/>
+<br/>
+
+# Thank you 🙌
+
+
+
+
+
 
 
 
