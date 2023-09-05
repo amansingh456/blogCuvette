@@ -13,7 +13,7 @@ const Navbar = () => {
   useEffect(() => {
     async function getUser() {
       const { data } = await axios.get(
-        `http://16.171.37.39/api/auth/loggedinuser`,
+        `https://glamorous-gold-jersey.cyclic.app/api/auth/loggedinuser`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

@@ -17,7 +17,7 @@ const Blog = () => {
 
   async function fetchComments() {
     const { data } = await axios.get(
-      `http://16.171.37.39/api/posts/comments/${id}`
+      `https://glamorous-gold-jersey.cyclic.app/api/posts/comments/${id}`
     );
 
     setTotalComments([...data]);
@@ -28,11 +28,11 @@ const Blog = () => {
   useEffect(() => {
     async function fetchPostById() {
       const { data } = await axios.get(
-        `http://16.171.37.39/api/posts/${id}`
+        `https://glamorous-gold-jersey.cyclic.app/api/posts/${id}`
       );
       const userid = data.userid;
       const { data: userData } = await axios.post(
-        `http://16.171.37.39/api/user/getuser`,
+        `https://glamorous-gold-jersey.cyclic.app/api/user/getuser`,
         { userid }
       );
       setUser({ ...userData });
@@ -61,7 +61,7 @@ const Blog = () => {
       try {
         if (token) {
           const { data } = await axios.post(
-            `http://16.171.37.39/api/posts/addcomment/${id}`,
+            `https://glamorous-gold-jersey.cyclic.app/api/posts/addcomment/${id}`,
             { comment },
             {
               headers: {

@@ -1,5 +1,6 @@
 import { Box, Button, Flex, Image, Input, Text, useToast } from "@chakra-ui/react";
 import axios from "axios";
+import {useNavigate} from "react-router-dom"
 import { useEffect, useState } from "react";
 import { EditIcon, DeleteIcon } from '@chakra-ui/icons'
 import Popup from 'reactjs-popup';
@@ -8,15 +9,17 @@ import 'reactjs-popup/dist/index.css';
 const SingleComment = ({ commentid, comment, userid, postid, date }) => {
   const [user, setUser] = useState({});
   const [updateComment, setUpdatedComment] = useState("")
+  const navigate = useNavigate()
   const toast = useToast()
   const handleUpdate = async (id) => {
     let token = localStorage.getItem("token")
     if (token) {
       try {
         const { dat } = await axios.patch(
-          `http://16.171.37.39/api/posts/comments/${id}`, { "comment": updateComment }
+          `https://glamorous-gold-jersey.cyclic.app/api/posts/comments/${id}`, { "comment": updateComment }
         );
-        window.location.reload(false)
+        navigate("/")
+        // window.location.reload(false)
       } catch (error) {
         console.log('error: ', error);
       }
@@ -37,9 +40,11 @@ const SingleComment = ({ commentid, comment, userid, postid, date }) => {
     if (token) {
       try {
         const { dat } = await axios.delete(
-          `http://16.171.37.39/api/posts/comments/${id}`
+          `https://glamorous-gold-jersey.cyclic.app/api/posts/comments/${id}`
         );
-        window.location.reload(false)
+        navigate("/")
+        // window.location.reload(false)
+        console.log("jjooojjo")
       } catch (error) {
         console.log('error: ', error);
       }
@@ -59,7 +64,7 @@ const SingleComment = ({ commentid, comment, userid, postid, date }) => {
   useEffect(() => {
     async function fetchUserById() {
       const { data } = await axios.post(
-        `http://16.171.37.39/api/user/getuser`,
+        `https://glamorous-gold-jersey.cyclic.app/api/user/getuser`,
         { userid }
       );
       setUser({ ...data });

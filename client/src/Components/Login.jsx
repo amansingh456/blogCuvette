@@ -16,7 +16,7 @@ const Login = () => {
     try {
       const {
         data: { token, user },
-      } = await axios.post("http://16.171.37.39/api/auth/login", obj);
+      } = await axios.post("https://glamorous-gold-jersey.cyclic.app/api/auth/login", obj);
       localStorage.setItem("token", token);
       toast({
         title: "Success",

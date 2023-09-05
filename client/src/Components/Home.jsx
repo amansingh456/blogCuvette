@@ -21,7 +21,7 @@ const Homepage = () => {
     })
     async function fetchPosts() {
       const { data } = await axios.get(
-        `http://16.171.37.39/api/posts/allposts`
+        `https://glamorous-gold-jersey.cyclic.app/api/posts/allposts`
       );
       setBlogPosts(data.result);
     }

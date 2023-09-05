@@ -25,7 +25,7 @@ const Signup = () => {
     else{
       try {
         const { data } = await axios.post(
-          "http://16.171.37.39/api/auth/register",
+          "https://glamorous-gold-jersey.cyclic.app/api/auth/register",
           obj
         );
         toast({
